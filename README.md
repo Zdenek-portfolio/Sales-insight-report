@@ -57,16 +57,26 @@ Sales-insight-report/
 
 # How to Run
 
-1. Create a virtual environment (recommended)
+```bash
+# 1. Create a virtual environment (recommended)
 python -m venv venv
-source venv/bin/activate   # On Windows use: venv\Scripts\activate
-2. Install dependencies
-pip install -r requirements.txt
-3. Run the main script (example)
-python src/main.py
+# On Windows run:
+venv\Scripts\activate
+# On Unix (macOS, linux, WSL) run:
+source venv/bin/activate   
 
-OR run the interactive Streamlit interface
+# 2. Install dependencies
+pip install -r requirements.txt
+
+# 3. Run the main script
+python src/main.py
+```
+
+Or run the interactive Streamlit interface
+
+```bash
 streamlit run src/app.py
+```
 
 ---
 
