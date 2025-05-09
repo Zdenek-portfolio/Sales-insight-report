@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Config
-DATA_PATH = 'data/sales_data.xlsx'
+DATA_PATH = 'data/sales_data_example.xlsx'
 OUTPUT_DIR = 'reports/'
 
 # Load data
