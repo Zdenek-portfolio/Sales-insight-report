@@ -17,17 +17,17 @@
 
 # Project Structure
 
-sales-insight/
+Sales-insight-report/
 
 ├── data/      # Sample or uploaded sales data
 
-├── src/       # Python source code (data loading, analysis, visualization)
+├── src/       # Source code (data loading, analysis, visualization)
 
 ├── reports/   # Generated reports or exported charts
 
-├── LICENSE    # MIT license
+├── LICENSE
 
-├── README.md  x This file
+├── README.md
 
 ├── requirements.txt
 
