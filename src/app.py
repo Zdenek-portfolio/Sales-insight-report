@@ -2,20 +2,24 @@ import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+from pathlib import Path
 
-DATA_PATH = 'data/sales_data_example.xlsx'
+# Config
+DATA_DIR = 'data'
 OUTPUT_DIR = 'reports/'
 
 st.set_page_config(page_title="SalesInsight Dashboard", layout="centered")
-
 st.title("SalesInsight Report Generator")
 
-def load_data(path):
-    try:
-        df = pd.read_excel(path)
-    except Exception:
-        df = pd.read_csv(path)
-    return df
+# Functions
+def load_data_from_path(file_path):
+    if file_path.suffix == '.xlsx':
+        return pd.read_excel(file_path)
+    elif file_path.suffix == '.csv':
+        return pd.read_csv(file_path)
+    else:
+        st.error("Unsupported file format: %s" % file_path.suffix)
+        return None
 
 def clean_data(df):
     df['Date'] = pd.to_datetime(df['Date'])
@@ -49,21 +53,47 @@ def plot_top_products(top):
     ax.invert_yaxis()
     st.pyplot(fig)
 
-# App Logic
-if os.path.exists(DATA_PATH):
-    df = load_data(DATA_PATH)
+def save_plot(fig, filename):
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    fig.savefig(os.path.join(OUTPUT_DIR, filename), bbox_inches='tight')
+
+# File selection: upload or select existing
+uploaded_file = st.file_uploader("Upload your sales data file", type=["xlsx", "csv"])
+
+if uploaded_file is not None:
+    df = pd.read_excel(uploaded_file) if uploaded_file.name.endswith('.xlsx') else pd.read_csv(uploaded_file)
+    st.success(f"Loaded uploaded file: {uploaded_file.name}")
+else:
+    files = list(Path(DATA_DIR).glob('*.xlsx')) + list(Path(DATA_DIR).glob('*.csv'))
+    if files:
+        file_choice = st.selectbox("Select a file from data folder:", [f.name for f in files])
+        df = load_data_from_path(Path(DATA_DIR) / file_choice)
+        st.success(f"Loaded file: {file_choice}")
+    else:
+        st.error(f"No data files found in '{DATA_DIR}' folder.")
+        st.stop()
+
+# Clean and analyze
+if df is not None:
     df = clean_data(df)
 
-    st.success("Data loaded successfully!")
-
+    # Display metrics
     st.subheader("Total Revenue")
     st.metric("Total Revenue", f"${total_revenue(df):,.2f}")
 
+    # Plots
     st.subheader("Monthly Revenue Trend")
-    plot_monthly_trends(monthly_trends(df))
+    trends = monthly_trends(df)
+    plot_monthly_trends(trends)
 
     st.subheader("Top 5 Products")
-    plot_top_products(top_products(df))
+    top = top_products(df)
+    plot_top_products(top)
 
-else:
-    st.error("sales_data.xlsx not found in /data folder.")
+    # Save reports
+    try:
+        plot_monthly_trends(trends)
+        plot_top_products(top)
+        st.success(f"Reports saved to '{OUTPUT_DIR}' folder.")
+    except Exception:
+        st.warning("Could not save report images.")
