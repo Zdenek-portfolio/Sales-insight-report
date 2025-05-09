@@ -3,7 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import os
 
-DATA_PATH = 'data/sales_data.xlsx'
+DATA_PATH = 'data/sales_data_example.xlsx'
 OUTPUT_DIR = 'reports/'
 
 st.set_page_config(page_title="SalesInsight Dashboard", layout="centered")
