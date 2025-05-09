@@ -1,17 +1,25 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import os
+from pathlib import Path
 
 # Config
-DATA_PATH = 'data/sales_data_example.xlsx'
+DATA_DIR = 'data'
 OUTPUT_DIR = 'reports/'
 
 # Load data
-def load_data(path):
-    try:
-        df = pd.read_excel(path)
-    except Exception:
-        df = pd.read_csv(path)
+def load_data():
+    files = list(Path(DATA_DIR).glob('*.xlsx')) + list(Path(DATA_DIR).glob('*.csv'))
+    if not files:
+        raise FileNotFoundError("No .xlsx or .csv file found in the 'data' folder.")
+    
+    file = files[0]  # vezmeme první nalezený soubor
+    print(f"Loaded file: {file.name}")
+    
+    if file.suffix == '.xlsx':
+        df = pd.read_excel(file)
+    else:
+        df = pd.read_csv(file)
     return df
 
 # Preprocess data
@@ -57,7 +65,7 @@ def plot_top_products(top):
 
 # Main Logic
 def main():
-    df = load_data(DATA_PATH)
+    df = load_data()
     df = clean_data(df)
 
     revenue = total_revenue(df)
