@@ -19,7 +19,7 @@
 
 Sales-insight-report/
 
-├── data/      # Sample or uploaded sales data ('.xlsx', '.csv')
+├── data/      # Sample or uploaded sales data
 
 ├── src/       # Source code (data loading, analysis, visualization)
 
