@@ -55,7 +55,7 @@ def plot_top_products(top):
     save_plot(fig, 'top_products.png')
     plt.close()
 
-# Main
+# Main Logic
 def main():
     df = load_data(DATA_PATH)
     df = clean_data(df)
