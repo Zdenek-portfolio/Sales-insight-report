@@ -25,7 +25,9 @@ sales-insight/
 
 ├── reports/   # Generated reports or exported charts
 
-├── README.md  # This file
+├── LICENSE    # MIT license
+
+├── README.md  x This file
 
 ├── requirements.txt
 
