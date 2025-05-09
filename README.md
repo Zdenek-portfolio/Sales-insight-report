@@ -75,8 +75,3 @@ Create a .env file if you use API keys or credentials (e.g. for emailing reports
 
 EMAIL_USER="your@email.com"
 EMAIL_PASS="yourpassword"
-
----
-
-# License
-This project is licensed under the MIT License.
