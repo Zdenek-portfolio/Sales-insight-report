@@ -71,9 +71,10 @@ pip install -r requirements.txt
 python src/main.py
 ```
 
-Or run the interactive Streamlit interface
+Or run the Streamlit UI
 
 ```bash
+pip install -r requirements.txt
 streamlit run src/app.py
 ```
 
