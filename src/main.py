@@ -13,7 +13,7 @@ def load_data():
     if not files:
         raise FileNotFoundError("No .xlsx or .csv file found in the 'data' folder.")
     
-    file = files[0]  # vezmeme první nalezený soubor
+    file = files[0]
     print(f"Loaded file: {file.name}")
     
     if file.suffix == '.xlsx':
