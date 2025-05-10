@@ -59,9 +59,9 @@ Sales-insight-report/
 ```bash
 # 1. Create a virtual environment (recommended)
 python -m venv venv
-# On Windows run:
+# Activate the VE on Windows:
 venv\Scripts\activate
-# On Unix (macOS, linux, WSL) run:
+# Activate the VE on Unix (macOS, linux, WSL):
 source venv/bin/activate   
 
 # 2. Install dependencies
