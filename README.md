@@ -46,12 +46,11 @@ Sales-insight-report/
 
 # Tech Stack
 
-- Python 3.10+
-- pandas, numpy
-- matplotlib, seaborn or plotly
-- openpyxl or xlrd (for Excel)
-- (optional) Streamlit for UI
-- (optional) fpdf or pdfkit for exporting reports
+- Language:      Python 3.10+
+- Data Library:  pandas
+- File Handling: pathlib, os
+- Visualization: matplotlib
+- UI:            Streamlit
 
 ---
 
