@@ -9,7 +9,7 @@ DATA_DIR = 'data'
 OUTPUT_DIR = 'reports/'
 
 st.set_page_config(page_title="SalesInsight Dashboard", layout="centered")
-st.title("Sales Insight Report")
+st.title("SalesInsight Report Generator")
 
 # Functions
 def load_data_from_path(file_path):
@@ -92,25 +92,8 @@ if df is not None:
 
     # Save reports
     try:
-        # Monthly trends plot
-        fig1, ax1 = plt.subplots(figsize=(10, 4))
-        trends.plot(kind='bar', ax=ax1, color='skyblue')
-        ax1.set_title('Monthly Revenue')
-        ax1.set_xlabel('Month')
-        ax1.set_ylabel('Revenue')
-        ax1.grid(True)
-        save_plot(fig1, "monthly_trends.png")
-    
-        # Top products plot
-        fig2, ax2 = plt.subplots(figsize=(8, 4))
-        top.plot(kind='barh', ax=ax2, color='salmon')
-        ax2.set_title('Top Selling Products')
-        ax2.set_xlabel('Revenue')
-        ax2.set_ylabel('Product')
-        ax2.invert_yaxis()
-        save_plot(fig2, "top_products.png")
-    
+        plot_monthly_trends(trends)
+        plot_top_products(top)
         st.success(f"Reports saved to '{OUTPUT_DIR}' folder.")
-    except Exception as e:
-        st.warning(f"Could not save report images. Error: {e}")
-
+    except Exception:
+        st.warning("Could not save report images.")
