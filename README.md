@@ -1,50 +1,34 @@
-# SalesInsight – Automated Sales Reporting Tool
+# *SalesInsight* – Automated Sales Reporting Tool
 
-**SalesInsight** is a python-based project with the ability to automate the process of analyzing sales data and generating visual reports. It loads CSV or Excel data, processes it using popular data science libraries, and outputs clean, interpretable charts and summaries for business use.
+**SalesInsight** is a python-based project with the ability to automate the process of analyzing sales data and generating visual reports. It loads Excel or CSV data, processes it using popular data science libraries, and outputs clean, interpretable charts and summaries for business use.
 
----------
+---
 
-# Features
+## Features
 
 - Import sales data from `.xlsx` or `.csv` files  
-- Clean and preprocess raw sales records  
-- Generate KPIs such as revenue trends, top products, and regional performance  
-- Create visual charts (bar plots, pie charts, line graphs)  
-- Export reports as PNG or PDF (optional)  
-- Optional: Streamlit interface for non-technical users
+- Generate KPIs if required columns are present  
+- Create line, pie, and bar charts  
+- Display analysis in Streamlit with download option  
+- Optionally export charts via terminal (both options save charts as `.png` files)  
 
 ---
 
-# Project Structure
+## Data Requirements for KPI Charts
 
-Sales-insight-report/
+*Each chart requires the listed columns to be present in the dataset.*
 
-├── data/      # Sample or uploaded sales data
-
-├── src/       # Source code (data loading, analysis, visualization)
-
-├── reports/   # Generated reports or exported charts
-
-├── LICENSE
-
-├── README.md
-
-├── requirements.txt
-
-└── .gitignore
+- **Total Revenue Overview**: `Revenue`, `Date`  
+- **Monthly Revenue Trends**: `Revenue`, `Date`  
+- **Regional Revenue Breakdown**: `Revenue`, `Region`  
+- **Revenue by Product Category**: `Revenue`, `Category`  
+- **Top 5 Revenue-Generating Products**: `Revenue`, `Product`  
+- **Top 5 Best-Selling Products (by Units Sold)**: `Quantity`, `Product`  
+- **Units Sold per Product Category**: `Quantity`, `Category`
 
 ---
 
-# Example KPIs
-
-- Monthly revenue trends
-- Top 5 selling products
-- Revenue by region or product category
-- Performance of individual sales representatives
-
----
-
-# Tech Stack
+## Tech Stack
 
 - Language:      Python 3.10+
 - Data Library:  pandas
@@ -54,7 +38,7 @@ Sales-insight-report/
 
 ---
 
-# How to Run
+## How to Run
 
 ```bash
 # 1. Create a virtual environment (recommended)
