@@ -1,16 +1,26 @@
-# *SalesInsight* – Automated Sales Reporting Tool
+# Sales Insight – Data Analysis Tool
 
-**SalesInsight** is a python-based project with the ability to automate the process of analyzing sales data and generating visual reports. It loads Excel or CSV data, processes it using popular data science libraries, and outputs clean, interpretable charts and summaries for business use.
+**SalesInsight** is a Python-based tool designed to automate sales data analysis and create visual reports. The program processes Excel and CSV files and generates insightful charts, enabling businesses to make informed decisions based on their sales performance.
 
 ---
 
 ## Features
 
 - Import sales data from `.xlsx` or `.csv` files  
-- Generate KPIs if required columns are present  
-- Create line, pie, and bar charts  
+- Generate KPIs (e.g. *pie, line,* and *bar charts*)
 - Display analysis in Streamlit with download option  
 - Optionally export charts via terminal (both options save charts as `.png` files)  
+
+---
+
+## Tech Stack
+
+- **Language**: Python 3.10+
+- **Data Handling**: pandas, openpyxl
+- **File Handling**: pathlib, os
+- **Visualization**: Plotly
+- **Exporting**: Kaleido
+- **UI**: Streamlit
 
 ---
 
@@ -28,44 +38,42 @@
 
 ---
 
-## Tech Stack
-
-- Language:      Python 3.10+
-- Data Library:  pandas
-- File Handling: pathlib, os
-- Visualization: matplotlib
-- UI:            Streamlit
-
----
-
 ## How to Run
 
+1. Download and extract the `.zip` file.
+2. Locate the folder directory in your terminal
+3. Create a virtual environment:
 ```bash
-# 1. Create a virtual environment (recommended)
 python -m venv venv
-# Activate the VE on Windows:
-venv\Scripts\activate
-# Activate the VE on Unix (macOS, linux, WSL):
-source venv/bin/activate   
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Run the main script
-python src/main.py
 ```
+   
+4. Activate the virtual environment:
 
-Or run the Streamlit UI
+  - On Windows:
+    ```bash
+    venv\Scripts\activate
+    ```
 
+  - On macOS/Linux/WSL:
+    ```bash
+    source venv/bin/activate
+    ```
+   
+5. Install dependencies:
 ```bash
 pip install -r requirements.txt
-streamlit run src/app.py
+```
+   
+6. Run the app:
+```bash
+streamlit run src/display.py
 ```
 
----
+##
 
-# Environment Variables
-Create a .env file if you use API keys or credentials (e.g. for emailing reports or accessing cloud storage).
+To download the charts via terminal (*steps 1–5 remain the same*):
 
-EMAIL_USER="your@email.com"
-EMAIL_PASS="yourpassword"
+6. Run the script
+```bash
+python src/download.py
+```
